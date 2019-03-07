@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('kategori', function () {
+    return"kategori";
+});
+
+Route::get('detail_kategori/{id}', function ($id) {
+    return"id ".$id;
+});
+
+
+Route::resource('kategori','Kategoricontroller')->except(['delete','cerate']);

@@ -19,6 +19,10 @@ Route::get('kategori', function () {
     return"kategori";
 });
 
+Route::get('master', function () {
+    return view('Dashboard.index');
+});
+
 Route::get('detail_kategori/{id}', function ($id) {
     return"id ".$id;
 });

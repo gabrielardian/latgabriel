@@ -22,6 +22,9 @@ Route::get('kategori', function () {
 Route::get('master', function () {
     return view('Dashboard.index');
 });
+Route::get('loby', function () {
+    return view('Dashboard.kontenadmin');
+});
 
 Route::get('detail_kategori/{id}', function ($id) {
     return"id ".$id;

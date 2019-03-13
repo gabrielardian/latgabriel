@@ -50,6 +50,7 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
   @yield('adminkonten')
+  @yield('kategori')
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">

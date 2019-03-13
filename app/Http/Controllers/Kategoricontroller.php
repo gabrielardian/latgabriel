@@ -11,10 +11,14 @@ class Kategoricontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(\Illuminate\Http\Request $request)
     {
-       $kategoris  = Kategori::all();
-       return view('kategori',compact('kategoris'));
+        $kategoris = Kategori::when($request->keyword, function ($query) use ($request) {
+            $query->where('kategori', 'like', "%{$request->keyword}%")
+            ->orWhere('id', 'like', "%{$request->keyword}%");
+                
+        })->get();
+       return view('kategori.index',compact('kategoris'));
     }
 
     /**

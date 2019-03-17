@@ -34,5 +34,11 @@ Route::get('kategorii', function () {
     return"id ".$id;
 });*/
 
+Route::post('kategori.store','Kategoricontroller@store');
+Route::post('kategori/update','Kategoricontroller@update');
+Route::get('kategori.tambah','Kategoricontroller@tambah');
+Route::get('kategori/destroy/{id}','Kategoricontroller@destroy');
+Route::get('kategori.kategoriedit/{id}','Kategoricontroller@edit');
+
+
 Route::resource('kategori','Kategoricontroller');
-Route::resource('kategori','Kategoricontroller')->except(['delete','cerate']);

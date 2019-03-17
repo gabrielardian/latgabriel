@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Kategori;
+use Illuminate\Support\Facades\DB;
 class Kategoricontroller extends Controller
 {
     /**
@@ -21,14 +22,18 @@ class Kategoricontroller extends Controller
        return view('kategori.index',compact('kategoris'));
     }
 
+    
+
+    
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function tambah()
     {
-        //
+	    return view('kategori.kategoritambah'); 
     }
 
     /**
@@ -39,7 +44,10 @@ class Kategoricontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $kategoris = new Kategori();
+        $kategoris->kategori = $request->nama_kategori;
+        $kategoris->save();
+        return redirect('kategori');
     }
 
     /**
@@ -61,7 +69,8 @@ class Kategoricontroller extends Controller
      */
     public function edit($id)
     {
-        //
+        $kategoris = Kategori::where('id',$id)->get();
+        return view('kategori.kategoriedit',compact('kategoris'));
     }
 
     /**
@@ -71,9 +80,13 @@ class Kategoricontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        DB::table('kategori')->where('id',$request->id)->update([
+        'kategori' => $request->nama_kategori,
+   
+    ]);
+        return redirect('kategori');
     }
 
     /**
@@ -84,6 +97,7 @@ class Kategoricontroller extends Controller
      */
     public function destroy($id)
     {
-        
+       DB::table('kategori')->where('id',$id)->delete();
+       return redirect('kategori');
     }
 }

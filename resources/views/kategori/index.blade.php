@@ -17,7 +17,8 @@
     </div>
 </form>
               
-              
+<a href="/kategori.tambah"> + Tambah</a>
+
 <table id="example1" class="table table-bordered table-striped">
             <thead>
             <tr>
@@ -33,6 +34,13 @@
         </td>
         <td>
           <center>{{$kategori->kategori}}</center>
+        </td>
+        <td> 
+          <center>
+		        <a href="kategori.kategoriedit/{{ $kategori->id }}">Edit</a>
+		        |
+		        <a href="/kategori/destroy/{{ $kategori->id }}">Hapus</a>
+          </center>
         </td>
       </tr>
       @endforeach
